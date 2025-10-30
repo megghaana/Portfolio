@@ -1,10 +1,12 @@
-/* Basic Reset and Variables */
+/* Custom Variables and Global Reset */
 :root {
-    --primary-color: #0077B6; /* A professional, tech-focused blue */
-    --secondary-color: #4CAF50; /* Eco-friendly green for emphasis */
+    --primary-color: #1a4d6f; /* Deep Navy/Professional Blue */
+    --secondary-color: #3b9e84; /* Sophisticated Eco Green */
     --text-color: #333;
-    --background-color: #f4f4f4;
+    --light-text-color: #555;
+    --background-color: #f8f8f8;
     --card-bg: #ffffff;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 * {
     margin: 0;
@@ -12,104 +14,166 @@
     box-sizing: border-box;
 }
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif; /* New Google Font */
     line-height: 1.6;
     color: var(--text-color);
     background: var(--background-color);
+    transition: background-color 0.3s;
 }
 .container {
     width: 90%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
     overflow: hidden;
-    padding: 20px 0;
+    padding: 0 20px; /* Added horizontal padding */
 }
 
 /* Header/Navigation */
 header {
     background: var(--primary-color);
     color: #fff;
-    padding: 20px 0;
+    padding: 30px 0; /* Increased padding */
     text-align: center;
+    box-shadow: var(--shadow-light);
 }
 header h1 {
-    font-size: 2.5em;
+    font-size: 2.8em;
     margin-bottom: 5px;
+    font-weight: 700;
 }
 .tagline {
     font-style: italic;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-weight: 300;
 }
 nav a {
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
-    margin: 0 15px;
-    font-weight: 600;
+    margin: 0 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: color 0.3s;
 }
 nav a:hover {
     color: var(--secondary-color);
 }
 
-/* Sections */
+/* General Sections */
 section {
-    padding: 40px 0;
+    padding: 80px 0; /* Increased vertical padding for breathing room */
 }
 h2 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     color: var(--primary-color);
-    font-size: 2em;
-    border-bottom: 3px solid var(--secondary-color);
-    display: inline-block;
-    padding-bottom: 5px;
-    width: 100%;
-}
-.bio-section p {
-    font-size: 1.1em;
-    text-align: center;
-    margin-bottom: 20px;
+    font-size: 2.2em;
+    font-weight: 700;
 }
 
-/* Project Cards */
+/* About Section */
+.bio-section p {
+    font-size: 1.15em;
+    text-align: center;
+    margin: 0 auto 30px auto;
+    max-width: 800px;
+    color: var(--light-text-color);
+}
+
+/* Button Styling */
+.button {
+    display: table; /* Centers the button horizontally */
+    margin: 0 auto;
+    background: var(--secondary-color);
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: 500;
+}
+.button:hover {
+    background: #2e7a68;
+    transform: translateY(-2px);
+}
+
+/* Project Section (Grid Layout) */
+.project-section {
+    background: #ebebeb; /* Slight variation in background */
+}
+.project-section .container {
+    display: grid;
+    /* Responsive Grid: 3 columns, dropping to 1 on small screens */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
 .project-card {
     background: var(--card-bg);
-    padding: 20px;
-    margin-bottom: 20px;
-    border-left: 5px solid var(--primary-color);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-7px); /* Dynamic lift effect */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }
 .project-card h3 {
     color: var(--primary-color);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-size: 1.4em;
 }
-.project-card .tools {
+.tools-list {
     display: block;
     font-style: italic;
-    color: #666;
-    margin: 10px 0;
+    color: var(--light-text-color);
+    margin: 15px 0;
     font-size: 0.9em;
 }
-.project-card .achievement {
-    color: var(--secondary-color);
-    font-weight: bold;
+/* Specific styling for the Eco Coder project */
+.eco-coder-focus {
+    border: 2px solid var(--secondary-color); 
+}
+.achievement {
+    display: inline-block;
+    background-color: var(--secondary-color); 
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin-top: 10px;
+    font-weight: 700;
 }
 
 /* Skills Section */
 .skills-section {
-    background: #e9e9e9;
+    background: var(--card-bg);
+}
+.skills-section .container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 .skill-group {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px dashed #ccc;
+    flex-basis: 30%; /* Gives each group equal space */
+    min-width: 250px;
+    margin-bottom: 30px;
+    padding: 20px;
+    text-align: center;
+    border-right: 1px solid #ddd;
+}
+.skill-group:last-child {
+    border-right: none;
 }
 .skill-group h4 {
     color: var(--secondary-color);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: 700;
 }
 .skills-section p {
     font-size: 1em;
+    color: var(--light-text-color);
 }
 
 /* Footer/Contact */
@@ -117,24 +181,13 @@ footer {
     background: var(--text-color);
     color: #fff;
     text-align: center;
-    padding: 20px 0;
+    padding: 30px 0;
 }
 footer a {
     color: var(--secondary-color);
     text-decoration: none;
+    transition: color 0.3s;
 }
-
-/* Button Styling (for LinkedIn link) */
-.button {
-    display: inline-block;
-    background: var(--secondary-color);
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    margin-top: 15px;
-}
-.button:hover {
-    background: #388e3c;
+footer a:hover {
+    color: #fff;
 }
